@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Matt Olson" />
+  <meta name="date" content="2015-09-11" />
+  <title>Software Carpentry</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="pandoc.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Software Carpentry</h1>
+<h2 class="author">Matt Olson</h2>
+<h3 class="date">September 11, 2015</h3>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#git">Git</a><ul>
+<li><a href="#version-control-with-git-high-level">Version Control with Git: High Level</a></li>
+<li><a href="#you-can-think-of-version-control-systems-as-saving-commented-snapshots-of-your-work-in-time.">You can think of version control systems as saving commented snapshots of your work in time.</a><ul>
+<li><a href="#why-bother-with-vc-common-scenarios-...">Why Bother with VC: Common Scenarios ...</a></li>
+<li><a href="#the-git-model">The Git Model</a></li>
+<li><a href="#additional-resources">Additional Resources</a></li>
+</ul></li>
+<li><a href="#getting-off-the-ground-with-our-repository">Getting Off the Ground with Our Repository</a></li>
+<li><a href="#case-studies">Case Studies</a><ul>
+<li><a href="#case-i-retrieving-good-simulation-results">Case I: Retrieving Good Simulation Results</a></li>
+<li><a href="#case-ii-trying-out-a-new-idea">Case II: Trying Out a New Idea</a></li>
+<li><a href="#case-iii-working-on-a-project-with-co-author">Case III: Working on a Project with Co-Author</a></li>
+</ul></li>
+<li><a href="#command-reference">Command Reference</a></li>
+</ul></li>
+<li><a href="#make">Make</a></li>
+<li><a href="#pandoc">Pandoc</a></li>
+</ul>
+</div>
+<h1 id="git">Git</h1>
+<h2 id="version-control-with-git-high-level">Version Control with Git: High Level</h2>
+<h2 id="you-can-think-of-version-control-systems-as-saving-commented-snapshots-of-your-work-in-time.">You can think of version control systems as saving commented snapshots of your work in time.</h2>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<h3 id="why-bother-with-vc-common-scenarios-...">Why Bother with VC: Common Scenarios ...</h3>
+<ol style="list-style-type: decimal">
+<li>You found a good model setting for some simulation results. After playing around with your code and making some changes you can no longer replicate what you found a few days ago ...</li>
+<li>You decide to use a Ridge instead of Lasso penalty in your regression. You comment out all the code using the Lasso and add in new code for the Ridge. The Ridge doesn't work that great - now you have to go through all of your code and &quot;undo&quot; these changes ...</li>
+<li>You are working on a paper with a co-author in Dropbox and you both try to modify it at the same time ...</li>
+<li>You find yourself naming files like &quot;modelv1.R&quot;, &quot;modelv2.R&quot;, ... or &quot;temp&quot;, &quot;old&quot;, &quot;experimental&quot;, ...</li>
+</ol>
+<h3 id="the-git-model">The Git Model</h3>
+<p>Understanding this model is the key to everything!</p>
+<ul>
+<li>working directory | staging | commit model</li>
+<li>maybe a figure or something ... ?</li>
+<li>github</li>
+</ul>
+<h3 id="additional-resources">Additional Resources</h3>
+<ul>
+<li>Github Book (https://git-scm.com/book/en/v2) Chapters 1-3</li>
+<li>(https://www.atlassian.com/git/tutorials)</li>
+</ul>
+<h2 id="getting-off-the-ground-with-our-repository">Getting Off the Ground with Our Repository</h2>
+<p>Some initializations if you've never used <code>git</code>:</p>
+<pre><code>git config --global user.name &quot;Matt Olson&quot;
+git config --global user.email &quot;molson5574@gmail.com&quot;
+git config --global color.ui &quot;auto&quot;
+git config --global core.editor &quot;emacs -w&quot;</code></pre>
+<p>Pull the repository to your machine (you do this once - after that you &quot;push&quot; and &quot;pull&quot; to interact with the Github repository):</p>
+<pre><code>git clone https://github.com/molson2/StatisticalComputingFall2015</code></pre>
+<p>Suppose you create your own tutorial in a file called <code>tutorial.md</code>. Here are the steps for adding it to our repository:</p>
+<pre><code>git add tutorial.md # adds tutorial.md to stagin area
+git commit -m &quot;Added a tutorial&quot; # creates a new commit
+git pull # pulls in any new changes
+git push # adds your new commit to Github</code></pre>
+<h2 id="case-studies">Case Studies</h2>
+<h3 id="case-i-retrieving-good-simulation-results">Case I: Retrieving Good Simulation Results</h3>
+<h3 id="case-ii-trying-out-a-new-idea">Case II: Trying Out a New Idea</h3>
+<h3 id="case-iii-working-on-a-project-with-co-author">Case III: Working on a Project with Co-Author</h3>
+<h2 id="command-reference">Command Reference</h2>
+<h1 id="make">Make</h1>
+<h1 id="pandoc">Pandoc</h1>
+</body>
+</html>
