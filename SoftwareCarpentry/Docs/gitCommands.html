@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="new.css" type="text/css" />
+</head>
+<body>
+<h1 id="git-commands-for-common-tasks">Git Commands for Common Tasks</h1>
+<h4 id="get-help-on-something-i.e.-git-log---graph">Get help on something, i.e. git log --graph</h4>
+<pre><code>man git-log</code></pre>
+<h3 id="configure-global-variables">Configure global variables</h3>
+<pre><code>git config --global user.name &quot;Your Name Comes Here&quot;
+git config --global user.email you@yourdomain.example.com
+git config --list # see list of configs
+git config --system core.editor emacs # set the editor for things like commit -m</code></pre>
+<h3 id="create-new-git-project">Create new git project</h3>
+<pre><code>git init</code></pre>
+<h3 id="add-all-files">Add ALL files</h3>
+<pre><code>git add .</code></pre>
+<h3 id="add-a-file-to-the-staging-area">Add a file to the staging area</h3>
+<pre><code>git add changedFile</code></pre>
+<h3 id="another-way-to-go-will-add-commit-modified-files-in-one-step">Another way to go: will add + commit modified files in one step</h3>
+<pre><code>git commit -a</code></pre>
+<h3 id="see-differences-between-repo-and-old-commits">See differences between repo and old commits</h3>
+<pre><code>git diff --cached
+git diff # difference between wd and staged
+git diff --staged # difference between staged and last commit</code></pre>
+<h3 id="see-which-things-have-changed-yet-to-be-commited-etc">See which things have changed, yet to be commited, etc</h3>
+<pre><code>git status
+git status -s # abbreviated status message</code></pre>
+<h3 id="see-history-of-commits">See history of commits</h3>
+<pre><code>git log
+git log -p # see diffs
+git log --stat --summary
+git log --graph --decorate --oneline</code></pre>
+<h3 id="creating-new-branch-for-experimenting-perhaps">Creating new branch (for experimenting perhaps)</h3>
+<p>If you create new file in different branch, doesn't seem to show up when you &quot;ls&quot; in the same directory...</p>
+<pre><code>git branch mattsBranch
+git branch # shows you which branch you are on
+git checkout mattsBranch # switches you over
+git checkout master # takes you back to original branch</code></pre>
+<h3 id="to-merge-branches">To merge branches</h3>
+<pre><code>git merge mattBranch
+git branch -d mattBranch # delete mattBranch (ensures that changes are in current branch)
+git branch -D crazy-idea # totally get rid of something you tried, different from the previous command</code></pre>
+<h3 id="clone-repository">Clone repository</h3>
+<pre><code>git clone /path/to/repo myNameForIt</code></pre>
+<h3 id="pull-in-new-changes-fetches-changes-and-merges-them-into-branch">Pull in new changes (fetches changes and merges them into branch)</h3>
+<pre><code>git pull /path/to/directory master</code></pre>
+<h3 id="safely-look-at-repository-to-see-if-there-are-changes-worth-pulling">Safely &quot;look&quot; at repository to see if there are changes worth &quot;pulling&quot;</h3>
+<pre><code>git fetch /path/to/rep
+git log -p HEAD..FETCH_HEAD</code></pre>
+<h3 id="define-an-alias-for-the-reporistory-you-are-working-with">Define an &quot;alias&quot; for the reporistory you are working with</h3>
+<pre><code>git remote add bob /home/bob/myrepo
+git fetch bob</code></pre>
+<h3 id="to-use-ssh-protocol-with-cloning">To use SSH protocol with cloning</h3>
+<p>When working on a server, you need to obtain an ssh-key and add it to GitHub (if you want to work with a GitHub repository)</p>
+<pre><code>git clone molson@wharton.edu:home/molson/repo myRepName</code></pre>
+<h4 id="see-what-your-remotes-are">See what your remotes are</h4>
+<pre><code>git remote -v
+git remote set-url origin git@github.com:USERNAME/REPOSITORY
+git remote add  [shortname] [url] # gives alias for longer url</code></pre>
+<h3 id="delete-file-and-stop-tracking-it">Delete file and stop tracking it</h3>
+<pre><code>git rm a.txt</code></pre>
+<h3 id="have-git-stop-tracking-a-file-but-dont-delete-from-working-directory">Have git stop tracking a file, but don't delete from working directory</h3>
+<pre><code>git rm --cached fname</code></pre>
+<h3 id="to-rename-a-file-old-hat-just-prefix-with-git">To rename a file (old hat, just prefix with &quot;git&quot;)</h3>
+<pre><code>git mv a b</code></pre>
+<h3 id="git-push-syntax">Git push syntax</h3>
+<pre><code>git push [remote-name] [branch-name]</code></pre>
+<h3 id="undo-changes-made-to-file-in-working-directory">&quot;Undo&quot; changes made to file in working directory</h3>
+<pre><code>git checkout -- fileToUndo</code></pre>
+<h3 id="ignore-files-with-certain-extensions">Ignore files with certain extensions</h3>
+<p>File called &quot;.gitignore&quot; contains extensions of files you want git to completely ignore; i.e. compiled binaries. In main directory, put the line in .gitignore *.o.</p>
+<h3 id="checking-out-a-commit">Checking out a commit</h3>
+<p>Makes the entire working directory match that commit: view old state of project without altering current state # i.e. checking out is a read-only operation&lt;</p>
+<pre><code>git checkout &lt;commit&gt; &lt;file&gt; # a single file
+git checkout &lt;commit&gt; # every tracked file</code></pre>
+<h3 id="create-a-new-commit-that-undoes-the-changes-from-a-certain-commit">Create a new commit that undoes the changes from a certain commit</h3>
+<pre><code>git revert &lt;commit&gt;
+git revert --abort # if there are conflicts and you just want to run away</code></pre>
+<h3 id="unstage-every-file">Unstage every file</h3>
+<pre><code>git reset # unstage everything (so it seems to basically undo the &quot;adds&quot;</code></pre>
+<h3 id="unstage-a-file">Unstage a file</h3>
+<pre><code>git reset HEAD &lt;file&gt;</code></pre>
+<h3 id="add-a-file-to-the-last-commit-if-you-forgot-to-add-something">Add a file to the last commit (if you forgot to add something)</h3>
+<pre><code>git commit -m &quot;i made a commit&quot;
+git add forgottenFile
+git commit --amend</code></pre>
+<h3 id="list-branches-that-have-not-been-merged-in">List branches that have not been merged in</h3>
+<pre><code>git branch --no-merged</code></pre>
+<h3 id="tag-important-points-in-your-work-release-versions-etc.">Tag important points in your work (release versions, etc.)</h3>
+<pre><code>git tag # show tags
+git tag -a v1.4 -m &#39;my version 1.4&#39; # create annotated tag
+git show v1.0 # show the commit realted to tag &quot;v1.0&quot;
+git tag -a v1.2 9fceb02 # tag commit starting with 9fceb02
+git push origin --tags # push your tags to a remote server</code></pre>
+</body>
+</html>

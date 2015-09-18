@@ -8,7 +8,7 @@
   <meta name="date" content="2015-09-11" />
   <title>Software Carpentry</title>
   <style type="text/css">code{white-space: pre;}</style>
-  <link rel="stylesheet" href="pandoc.css" type="text/css" />
+  <link rel="stylesheet" href="new.css" type="text/css" />
 </head>
 <body>
 <div id="header">
@@ -18,53 +18,41 @@
 </div>
 <div id="TOC">
 <ul>
-<li><a href="#git">Git</a><ul>
-<li><a href="#version-control-with-git-high-level">Version Control with Git: High Level</a></li>
-<li><a href="#you-can-think-of-version-control-systems-as-saving-commented-snapshots-of-your-work-in-time.">You can think of version control systems as saving commented snapshots of your work in time.</a><ul>
-<li><a href="#why-bother-with-vc-common-scenarios-...">Why Bother with VC: Common Scenarios ...</a></li>
-<li><a href="#the-git-model">The Git Model</a></li>
-<li><a href="#additional-resources">Additional Resources</a></li>
-</ul></li>
-<li><a href="#getting-off-the-ground-with-our-repository">Getting Off the Ground with Our Repository</a></li>
-<li><a href="#case-studies">Case Studies</a><ul>
-<li><a href="#case-i-retrieving-good-simulation-results">Case I: Retrieving Good Simulation Results</a></li>
-<li><a href="#case-ii-trying-out-a-new-idea">Case II: Trying Out a New Idea</a></li>
-<li><a href="#case-iii-working-on-a-project-with-co-author">Case III: Working on a Project with Co-Author</a></li>
-</ul></li>
-<li><a href="#command-reference">Command Reference</a></li>
-</ul></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#git">Git</a></li>
 <li><a href="#make">Make</a></li>
-<li><a href="#pandoc">Pandoc</a></li>
+<li><a href="#markdown">Markdown</a></li>
 </ul>
 </div>
-<h1 id="git">Git</h1>
-<h2 id="version-control-with-git-high-level">Version Control with Git: High Level</h2>
-<h2 id="you-can-think-of-version-control-systems-as-saving-commented-snapshots-of-your-work-in-time.">You can think of version control systems as saving commented snapshots of your work in time.</h2>
+<h1 id="overview">Overview</h1>
 <ul>
-<li></li>
-<li></li>
-<li></li>
+<li><strong>Git</strong>: keep a record of your workflow</li>
+<li><strong>Make</strong>: automate your workflow</li>
+<li><strong>Markdown</strong>: create flexible documents</li>
 </ul>
-<h3 id="why-bother-with-vc-common-scenarios-...">Why Bother with VC: Common Scenarios ...</h3>
+<p>There is no way to cover any one of these in a short time. My hope is just to convince you that these tools are worth knowing about (at worst), and worth incorporating into your workflow (at best). I want to emphasize the types of problems that come up in everyday programming life and how these tools can help solve them. There are great tutorials on the web with much more depth than what I present here, and I've provided references where appropriate.</p>
+<h1 id="git">Git</h1>
+<p>(See <code>/Docs/gitCommands.html</code> and <code>/Examples/GitExample</code>)</p>
+<h2 id="why-bother-with-version-control-common-scenarios-...">Why Bother with Version Control: Common Scenarios ...</h2>
 <ol style="list-style-type: decimal">
 <li>You found a good model setting for some simulation results. After playing around with your code and making some changes you can no longer replicate what you found a few days ago ...</li>
-<li>You decide to use a Ridge instead of Lasso penalty in your regression. You comment out all the code using the Lasso and add in new code for the Ridge. The Ridge doesn't work that great - now you have to go through all of your code and &quot;undo&quot; these changes ...</li>
+<li>You want to try out a crazy new idea for your project without disrupting the &quot;stable&quot; work you have already done. You copy your entire project into a new directory called &quot;project_experiment&quot; ...</li>
 <li>You are working on a paper with a co-author in Dropbox and you both try to modify it at the same time ...</li>
+<li>You are working on the Grid and are modifying files on the fly, and then copying them back and forth ...</li>
 <li>You find yourself naming files like &quot;modelv1.R&quot;, &quot;modelv2.R&quot;, ... or &quot;temp&quot;, &quot;old&quot;, &quot;experimental&quot;, ...</li>
 </ol>
-<h3 id="the-git-model">The Git Model</h3>
-<p>Understanding this model is the key to everything!</p>
-<ul>
-<li>working directory | staging | commit model</li>
-<li>maybe a figure or something ... ?</li>
-<li>github</li>
-</ul>
-<h3 id="additional-resources">Additional Resources</h3>
-<ul>
-<li>Github Book (https://git-scm.com/book/en/v2) Chapters 1-3</li>
-<li>(https://www.atlassian.com/git/tutorials)</li>
-</ul>
-<h2 id="getting-off-the-ground-with-our-repository">Getting Off the Ground with Our Repository</h2>
+<h2 id="git-the-conceptual-overview">Git: The Conceptual Overview</h2>
+<p>You can think of version control as managing a collection of &quot;snapshots&quot; of your project over time. The basic workflow is as follows: create or modify some files, <code>add</code> them to the <em>Staging Area</em>, and <code>commit</code> the files in the <em>Staging Area</em> to create a &quot;snapshot.&quot; When thinking about how Git works, it is very useful to think of working out of three directories:</p>
+<ol style="list-style-type: decimal">
+<li>working directory (where you are working on files)</li>
+<li><em>Staging Area</em> (a temporary &quot;basket&quot; for where you put files before you commit them)</li>
+<li>(what I'll call) the snapshot directory (the &quot;place&quot; where Git stores snapshots of your project)</li>
+</ol>
+<p>(A figure might make this more clear ...)</p>
+<p>You &quot;add&quot; files from your working directory to the <em>Staging Area</em> with the <code>add</code> command, and you &quot;commit&quot; the files from the <em>Staging Area</em> to the snapshot directory via the <code>commit</code> command.</p>
+<p>As final note, &quot;Github&quot; and &quot;git&quot; are different objects: Github is a website that hosts git repositories, while git is a version control system. You can use git profitably without ever using Github.</p>
+<h2 id="git-examples">Git: Examples</h2>
+<h3 id="example-1-using-our-repository">Example 1: Using Our Repository</h3>
 <p>Some initializations if you've never used <code>git</code>:</p>
 <pre><code>git config --global user.name &quot;Matt Olson&quot;
 git config --global user.email &quot;molson5574@gmail.com&quot;
@@ -72,17 +60,66 @@ git config --global color.ui &quot;auto&quot;
 git config --global core.editor &quot;emacs -w&quot;</code></pre>
 <p>Pull the repository to your machine (you do this once - after that you &quot;push&quot; and &quot;pull&quot; to interact with the Github repository):</p>
 <pre><code>git clone https://github.com/molson2/StatisticalComputingFall2015</code></pre>
-<p>Suppose you create your own tutorial in a file called <code>tutorial.md</code>. Here are the steps for adding it to our repository:</p>
+<p>Matt tells you that he added some new files to the repository:</p>
+<pre><code>git pull</code></pre>
+<p>Suppose you create your own tutorial in a file called <code>tutorial.md</code>. Here are the steps for adding it to our repository: (MAY WANT TO REWORK ORDER OF COMMITING AND PULLING...)</p>
 <pre><code>git add tutorial.md # adds tutorial.md to stagin area
 git commit -m &quot;Added a tutorial&quot; # creates a new commit
 git pull # pulls in any new changes
 git push # adds your new commit to Github</code></pre>
-<h2 id="case-studies">Case Studies</h2>
-<h3 id="case-i-retrieving-good-simulation-results">Case I: Retrieving Good Simulation Results</h3>
-<h3 id="case-ii-trying-out-a-new-idea">Case II: Trying Out a New Idea</h3>
-<h3 id="case-iii-working-on-a-project-with-co-author">Case III: Working on a Project with Co-Author</h3>
-<h2 id="command-reference">Command Reference</h2>
+<h3 id="example-2-retreiving-an-old-version">Example 2: Retreiving an Old Version</h3>
+<h3 id="example-3-trying-out-new-ideas-with-branching">Example 3: Trying Out New Ideas with Branching</h3>
+<h2 id="additional-resources">Additional Resources</h2>
+<ul>
+<li>Github Book (https://git-scm.com/book/en/v2) Chapters 1-3</li>
+<li>(https://www.atlassian.com/git/tutorials)</li>
+<li>(http://swcarpentry.github.io/git-novice/)</li>
+</ul>
 <h1 id="make">Make</h1>
-<h1 id="pandoc">Pandoc</h1>
+<p>(See <code>/Examples/MakeExample</code>)</p>
+<h2 id="why-bother-with-makefiles">Why Bother with Makefiles</h2>
+<p>You probably associate Makefiles will compiling <code>C++</code> projects, but their usefulness extends far beyond this. Makefiles are useful in any software project in which the &quot;final product&quot; depends on the results of other files, functions, or scripts. At their core, they manage the dependencies between the files needed to build your final product. For example, if you are writing a report in latex, the final product, your report, might depend on some <code>tex</code> files, some figures, and the code needed to generate these figures. When you change one of these, you need to rebuild your entire project. Make detects such changes, and allows you to rebuild your project in a &quot;minimal way&quot; with a very few number of commands (an example will make this clear). You can think of Makefiles as &quot;smart&quot; versions of ordinary shell scripts that you may already be using to carry out this task.</p>
+<p>Some typical scenarios...</p>
+<ol style="list-style-type: decimal">
+<li>You are writing a paper that includes figures generated from some <code>R</code> code. You start modifying some of the <code>R</code> files that produce these figures. It is clear that these need to be re-run to generate your figures, but is there anything else that needs to be re-run that depends on the output from these files? Do you need to recompile everything?</li>
+<li>You Find Yourself Typing In <code>R CMD BATCH</code>, <code>g++</code>, <code>pdflatex</code>, etc. over and over as you make changes to your source files.</li>
+</ol>
+<h2 id="make-conceptual-overview">Make: Conceptual Overview</h2>
+<p>Makefiles consist of rules, and rules consist of three parts: targets, dependencies, and actions (in pseudo-code)</p>
+<pre><code>target : dep1 dep2 dep3
+    action</code></pre>
+<p>You would parse the previous piece of code as: &quot;target depends on dep1, dep2, and dep3. To build the target, use the command action.&quot; As a concrete example, consider:</p>
+<pre><code>out.o : out.cpp
+    g++ out.cpp -o out.o</code></pre>
+<p>This rule says that in order to create <code>out.o</code>, we need to run <code>g++ out.cpp -o out.o</code>, and that <code>out.o</code> depends one <code>out.cpp</code>. If we put this in a Makefile, when we run the command <code>make</code> on the command line, <code>Make</code> will check to see if <code>out.o</code> already exists. If it doesn't, it compiles it with <code>g++</code> as indicated above. If it does exist, then it checks to make sure that <code>out.cpp</code> hasn't been modified since <code>out.o</code> was last created. If it has changed, it recompiles the project, and if not it does nothing.</p>
+<p>Makefiles generally consist of many such rules, and some rules depend on other rules. You can think of Make as organizing all the dependencies in an acyclic graph, and every time a node gets modified, Make will re-compile all of the descendents of that node. (see the next example).</p>
+<h2 id="make-examples">Make: Examples</h2>
+<p><code>/Examples/MakeExample</code></p>
+<p>The setting: we are writing a report that contains a plot of some simulation results (specifically, fitting a regression line to data simulated from a linear model). The workflow: we have <code>R</code> code in a file <code>simulate.R</code> that reads parameter values from <code>params.csv</code> and creates a plot. This plot goes in the tex file of our report <code>report.tex</code>. If the file containing the parameters changes, we want our Makefile to recognize that it has changed, re-run the <code>R</code> code, and recompile our latex document. If we change just the latex, there is no need to re-generate the figure (a shell script designed to automate your workflow wouldn't be able to figure this out).</p>
+<pre><code>.PHONY: all clean
+
+all: report.pdf
+
+report.pdf: report.tex params.csv linePlot.pdf
+    pdflatex report.tex
+
+linePlot.pdf: simulate.R params.csv
+    R CMD BATCH simulate.R
+
+clean:
+    rm *.log *.aux Rplots.pdf *.Rout *~ report.pdf linePlot.pdf</code></pre>
+<p>(See <code>/Examples/MakeExample/Makefile</code>) for a more commented version). To compile the project simple type <code>make</code>. There is no need to re-type a plethora of commands each time you want to re-generate things, and unneccesary work is never done by the computer when generating your final report.</p>
+<h2 id="additional-resources-1">Additional Resources</h2>
+<ul>
+<li>(http://swcarpentry.github.io/make-novice/)</li>
+</ul>
+<h1 id="markdown">Markdown</h1>
+<p>(See <code>/Examples/PandocExample</code>)</p>
+<h2 id="why-bother-with-markdown">Why Bother with Markdown</h2>
+<p>You go through the trouble of writing a nice document in HTML, but now you want that document in PDF form, or TeX form, or Word form, or Beamer form, ... heck, you just want your original document to be readable as a standalone document (good luck trying to read a paper just from the TeX source). Markdown allows you to write easy to read source documents, which can then be &quot;compiled&quot; into any number of formats via the <code>pandoc</code>. The source for this file was written in <code>softwareCarpentry.md</code>, and then compiled into standalone HTML using <code>pandoc</code>. See <code>/Examples/PandocExample</code> for a quick picture of how all of this looks. If you ever read blogs and wonder how people can produce such nice documents so quickly, it is because of Markdown.</p>
+<h2 id="additional-resources-2">Additional Resources</h2>
+<ul>
+<li>(http://pandoc.org/demos.html)</li>
+</ul>
 </body>
 </html>
