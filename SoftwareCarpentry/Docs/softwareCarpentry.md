@@ -30,13 +30,17 @@ what I present here, and I've provided references where appropriate.
 (1) You found a good model setting for some simulation results.  After playing
     around with your code and making some changes you can no longer replicate
     what you found a few days ago ...
+    
 (2) You want to try out a crazy new idea for your project without disrupting
     the "stable" work you have already done.  You copy your entire project
     into a new directory called "project_experiment" ...
+    
 (3) You are working on a paper with a co-author in Dropbox and you both try to
     modify it at the same time ...
+    
 (4) You are working on the Grid and are modifying files on the fly, and then
     copying them back and forth ...
+    
 (5) You find yourself naming files like "modelv1.R", "modelv2.R", ... or "temp",
     "old", "experimental", ...
 
@@ -50,8 +54,10 @@ useful to think of working out of three directories:
 
 
 (1) working directory (where you are working on files)
+
 (2) *Staging Area* (a temporary "basket" for where you put files before you
   commit them)
+  
 (3) (what I'll call) the snapshot directory (the "place" where Git stores
   snapshots of your project)
 
@@ -91,11 +97,11 @@ git pull
 
 Suppose you create your own tutorial in a file called `tutorial.md`.  Here are
 the steps for adding it to our repository:
-(MAY WANT TO REWORK ORDER OF COMMITING AND PULLING...)
+
 ```
+git pull # pulls in any new changes
 git add tutorial.md # adds tutorial.md to stagin area
 git commit -m "Added a tutorial" # creates a new commit
-git pull # pulls in any new changes
 git push # adds your new commit to Github
 ```
 
@@ -135,6 +141,7 @@ Some typical scenarios...
     clear that these need to be re-run to generate your figures, but is there
     anything else that needs to be re-run that depends on the output from these
     files?  Do you need to recompile everything?
+    
 (2) You Find Yourself Typing In `R CMD BATCH `, `g++ `, `pdflatex`, etc. over and
     over as you make changes to your source files.
 
