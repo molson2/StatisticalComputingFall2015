@@ -138,7 +138,6 @@ File called ".gitignore" contains extensions of files you want git to completely
 
 ### Checking out a commit ###
 Makes the entire working directory match that commit: view old state of project without altering current state
-# i.e. checking out is a read-only operation<
 ```
 git checkout <commit> <file> # a single file
 git checkout <commit> # every tracked file
