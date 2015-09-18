@@ -1,9 +1,14 @@
 # Rule to build html files from markdown
 
-all: softwareCarpentry.html
+OBJS=softwareCarpentry.html gitCommands.html
 
-%.html: %.md
-	pandoc $< -s --highlight-style pygments -c pandoc.css --toc -o $@
+all: $(OBJS)
+
+softwareCarpentry.html: softwareCarpentry.md
+	pandoc $< -s --highlight-style pygments -c new.css --toc --toc-depth=1 -o $@
+
+gitCommands.html: gitCommands.md
+	pandoc $< -s --highlight-style pygments -c new.css -o $@
 
 clean:
 	rm *.html *~

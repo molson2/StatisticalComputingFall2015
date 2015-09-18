@@ -12,7 +12,7 @@ example.tex: $(DEP)
 	pandoc -s $(DEP) -o example.tex
 
 example.html: $(DEP)
-	pandoc $(DEP) -s --highlight-style pygments --webtex -c matt.css -o example.html
+	pandoc $(DEP) -s --highlight-style pygments -c matt.css -o example.html --mathjax=https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 exampleBeamer.pdf: $(DEP)
 	pandoc -t beamer $(DEP) -o exampleBeamer.pdf

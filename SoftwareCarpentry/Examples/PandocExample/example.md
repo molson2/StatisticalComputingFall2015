@@ -6,9 +6,7 @@
 
 ## The algorithm ... ##
 
-\begin{equation}
-    x_{t+1} = x_{t} - \eta \nabla f(x_{t})
-\end{equation}
+$$    x_{t+1} = x_{t} - \eta \nabla f(x_{t}) $$
 
 ## Code for the algorithm ##
 
