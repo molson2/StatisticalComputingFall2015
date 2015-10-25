@@ -6,5 +6,5 @@ Repository for tutorials and code.
   - introduction to `Rcpp` and `RcppArmadillo`
 * SoftwareCarpentry
   - introduction to Git, Makefiles, and Markdown
-  
-
+* Dplyr
+  - short introduction to the `dplyr` package
