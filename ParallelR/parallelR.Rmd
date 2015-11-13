@@ -154,7 +154,7 @@ library(doParallel)
 cl <- makeCluster(4)
 registerDoParallel(cl)
 
-nSim <- 1e3
+nSim <- 50
 n <- 200
 #parLapply(cl, X = 1:nSim, fun = function(x) n) 
 
